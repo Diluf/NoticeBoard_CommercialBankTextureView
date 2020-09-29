@@ -951,6 +951,7 @@ public class FullscreenActivity extends AppCompatActivity implements TextureView
             mMediaPlayer.seekTo(-1);
             mMediaPlayer.stop();
             mMediaPlayer.reset();
+//            mMediaPlayer.release();
         }
 
         imageViewAdFull.setImageResource(0);
@@ -1230,7 +1231,7 @@ public class FullscreenActivity extends AppCompatActivity implements TextureView
             @Override
             public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
                 handlerSchedules.postDelayed(runnableSchedules, 10);
-                Log.d(TAG, "onError: VidAdFull++++++++++++++");
+                Log.d(TAG, i + "onError: VidAdFull++++++++++++++" + i1);
                 return true;
             }
         });
