@@ -1,9 +1,22 @@
 package com.c3labs.dss_CommercialBank.WebService;
 
+import com.c3labs.dss_CommercialBank.Clz.TLSSocketFactory;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.InetAddress;
+import java.net.Socket;
 import java.net.URL;
+import java.net.UnknownHostException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 
 /**
  * Created by c3 on 2/6/2018.
@@ -29,7 +42,13 @@ public class CallWeb {
         try {
 
             URL url = new URL(urlString);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+            //
+
+            TLSSocketFactory socketFactory = new TLSSocketFactory();
+            connection.setSSLSocketFactory(socketFactory);
+
+            //
 //            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             connection.setConnectTimeout(10000);
             connection.setRequestMethod("GET");
@@ -67,3 +86,5 @@ public class CallWeb {
 //        return "";
     }
 }
+
+

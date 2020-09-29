@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.c3labs.dss_CommercialBank.Clz.TLSSocketFactory;
 import com.c3labs.dss_CommercialBank.Controls.Methods;
 import com.c3labs.dss_CommercialBank.WebService.Refferences;
 
@@ -18,6 +19,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+
+import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by c3 on 3/23/2018.
@@ -53,7 +56,13 @@ public class AsyncURLConnection extends AsyncTask<ArrayList<File>, Void, Void> {
             URL postURL = new URL(Refferences.UpdateFileDownloadStatus.methodName);
             Log.d("MyURL----------", "doInBackground: " + Refferences.UpdateFileDownloadStatus.methodName + " - " + files);
 
-            HttpURLConnection con = (HttpURLConnection) postURL.openConnection();
+            HttpsURLConnection con = (HttpsURLConnection) postURL.openConnection();
+            //
+
+            TLSSocketFactory socketFactory = new TLSSocketFactory();
+            con.setSSLSocketFactory(socketFactory);
+
+            //
             con.setRequestProperty("Content-Type", "application/json");
             con.setConnectTimeout(10 * 1000);
             con.setReadTimeout(30 * 1000);

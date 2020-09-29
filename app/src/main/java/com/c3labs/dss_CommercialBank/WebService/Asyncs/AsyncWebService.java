@@ -18,6 +18,9 @@ import com.c3labs.dss_CommercialBank.WebService.CallWeb;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.net.ssl.SSLContext;
 
 /**
  * Created by c3 on 2/6/2018.
@@ -32,6 +35,7 @@ public class AsyncWebService extends AsyncTask<String, String, String> {
         this.context = context;
         this.taskId = taskId;
     }
+
 
     @Override
     protected void onPreExecute() {
@@ -63,6 +67,7 @@ public class AsyncWebService extends AsyncTask<String, String, String> {
 //
 //            }
         }
+
 
 
     }

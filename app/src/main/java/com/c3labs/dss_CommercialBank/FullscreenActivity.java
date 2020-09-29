@@ -8,6 +8,7 @@ import android.graphics.SurfaceTexture;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -19,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -168,6 +170,9 @@ public class FullscreenActivity extends AppCompatActivity implements TextureView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
         simpleDateFormatTime = new SimpleDateFormat("HH:mm:ss");
@@ -184,8 +189,13 @@ public class FullscreenActivity extends AppCompatActivity implements TextureView
 //        news.setSelected(true);
 
 //        statusIcon.setImageResource(new Methods().getNetworkStatusIcon(this));
-        downloadConstantStateIcon = FullscreenActivity.this.getResources().getDrawable(getResources().getIdentifier("@drawable/download",
-                null, FullscreenActivity.this.getPackageName()), FullscreenActivity.this.getTheme()).getConstantState();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            downloadConstantStateIcon = FullscreenActivity.this.getResources().getDrawable(getResources().getIdentifier("@drawable/download",
+                    null, FullscreenActivity.this.getPackageName()), FullscreenActivity.this.getTheme()).getConstantState();
+        } else {
+            downloadConstantStateIcon = FullscreenActivity.this.getResources().getDrawable(getResources().getIdentifier("@drawable/download",
+                    null, FullscreenActivity.this.getPackageName())).getConstantState();
+        }
 
 
         findViewById(R.id.btn_TestC3).setOnClickListener(new View.OnClickListener() {
