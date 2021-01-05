@@ -33,7 +33,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by Diluf on 2/8/2018.
@@ -86,7 +85,7 @@ public class AsyncDownloadMedia extends AsyncTask<ArrayList<String>, Integer, Ar
     protected ArrayList<String> doInBackground(final ArrayList<String>[] arrayLists) {
         InputStream input = null;
         OutputStream output = null;
-        HttpsURLConnection connection = null;
+        HttpURLConnection connection = null;
         URL url = null;
 //        ArrayList<String> doneArrayList = new ArrayList<>();
         String path = "";
@@ -96,11 +95,11 @@ public class AsyncDownloadMedia extends AsyncTask<ArrayList<String>, Integer, Ar
 //                url = new URL("http://203.143.20.94/nsban/upload_assets/upload_media/" + unAvailables.get(i));
                 url = new URL(Refferences.getMediaPath.method + unAvailables.get(i));
 
-                connection = (HttpsURLConnection) url.openConnection();
+                connection = (HttpURLConnection) url.openConnection();
                 //
 
-                TLSSocketFactory socketFactory = new TLSSocketFactory();
-                connection.setSSLSocketFactory(socketFactory);
+//                TLSSocketFactory socketFactory = new TLSSocketFactory();
+//                connection.setSSLSocketFactory(socketFactory);
 
                 //
                 connection.connect();

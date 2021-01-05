@@ -13,7 +13,6 @@ import java.net.UnknownHostException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
@@ -42,11 +41,11 @@ public class CallWeb {
         try {
 
             URL url = new URL(urlString);
-            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             //
 
-            TLSSocketFactory socketFactory = new TLSSocketFactory();
-            connection.setSSLSocketFactory(socketFactory);
+//            TLSSocketFactory socketFactory = new TLSSocketFactory();
+//            connection.setSSLSocketFactory(socketFactory);
 
             //
 //            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");

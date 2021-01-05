@@ -20,7 +20,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by c3 on 3/23/2018.
@@ -56,11 +55,11 @@ public class AsyncURLConnection extends AsyncTask<ArrayList<File>, Void, Void> {
             URL postURL = new URL(Refferences.UpdateFileDownloadStatus.methodName);
             Log.d("MyURL----------", "doInBackground: " + Refferences.UpdateFileDownloadStatus.methodName + " - " + files);
 
-            HttpsURLConnection con = (HttpsURLConnection) postURL.openConnection();
+            HttpURLConnection con = (HttpURLConnection) postURL.openConnection();
             //
 
-            TLSSocketFactory socketFactory = new TLSSocketFactory();
-            con.setSSLSocketFactory(socketFactory);
+//            TLSSocketFactory socketFactory = new TLSSocketFactory();
+//            con.setSSLSocketFactory(socketFactory);
 
             //
             con.setRequestProperty("Content-Type", "application/json");

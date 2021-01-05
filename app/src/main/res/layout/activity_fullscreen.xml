@@ -24,8 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorWhite"
-            android:padding="150dp"
-            android:src="@drawable/hund" />
+            android:padding="300dp"
+            android:src="@drawable/comm_logo" />
 
 
 

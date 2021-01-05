@@ -6,8 +6,8 @@ package com.c3labs.dss_CommercialBank.WebService;
 
 public class Refferences {
     //        public static String url = "http://203.143.20.94/coman/";
-//    public static String url = "http://signage.combank.net/noticeboard/";
-    public static String url = "https://c3dss-test-dss-coman-webapp.azurewebsites.net/";
+    public static String url = "http://signage.combank.net/noticeboard/";
+//    public static String url = "http://c3dss-test-dss-coman-webapp.azurewebsites.net/";
     public static String nameSpace = "service2.svc/";
 
     public static class Login {

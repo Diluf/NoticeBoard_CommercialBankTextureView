@@ -27,27 +27,27 @@ public class RunOnStartup extends BroadcastReceiver {
             e.printStackTrace();
 
         } finally {
-//            try {
-//                if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED) || intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)) {
-//                    Intent i = new Intent(context, Splash.class);
-//                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    context.startActivity(i);
-//
-//                    if (intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)) {
-//                        Log.d("[[[[[[[[[[[---", "onReceive: Replaced");
-//                        Log.d("[[[[[[[[[[[---", MyValues.getNewApkName());
-//
-//                        File file = new File(Methods.createOrGetDirectory() + MyValues.getNewApkName());
-//                        if (file.exists()) {
-//                            file.delete();
-//                        }
-//                        MyValues.setUpdateBeat(true);
-//
-//                    }
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            try {
+                if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED) || intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)) {
+                    Intent i = new Intent(context, Splash.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+
+                    if (intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)) {
+                        Log.d("[[[[[[[[[[[---", "onReceive: Replaced");
+                        Log.d("[[[[[[[[[[[---", MyValues.getNewApkName());
+
+                        File file = new File(Methods.createOrGetDirectory() + MyValues.getNewApkName());
+                        if (file.exists()) {
+                            file.delete();
+                        }
+                        MyValues.setUpdateBeat(true);
+
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }
